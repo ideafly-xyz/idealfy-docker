@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:1.24.0
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./nginx/certs:/etc/nginx/ssl
+    networks:
+      - app-network
+
+networks:
+  app-network:
